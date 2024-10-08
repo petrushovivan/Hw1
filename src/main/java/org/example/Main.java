@@ -25,7 +25,7 @@ public class Main {
         }
     }
 
-    private static int startMenu(){
+    private static int startMenu() {
         System.out.println("1. Register");
         System.out.println("2. Login");
         String num = sc.nextLine();
@@ -37,7 +37,7 @@ public class Main {
             System.out.println("Pleas enter 1 or 2");
             return startMenu();
         }
-        if(request == 1 || request ==2)
+        if(request == 1 || request == 2)
             return request;
         else {
             System.out.println("Pleas enter 1 or 2");

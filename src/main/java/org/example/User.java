@@ -1,11 +1,11 @@
 package org.example;
 
-import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.Objects;
 
 public class User {
 
-    private ArrayList<Habit> habits = new ArrayList<>();
+    private HashSet<Habit> habits = new HashSet<>();
 
     private String email;
 
@@ -32,6 +32,11 @@ public class User {
         return Objects.hash(email, password, name);
     }
 
+    @Override
+    public String toString(){
+        return "Email: " + email + "\nPassword: " + password + "\nName: " + name;
+    }
+
     public void addHabit(Habit habit){
         habits.add(habit);
     }
@@ -40,7 +45,7 @@ public class User {
         habits.remove(habit);
     }
 
-    public ArrayList<Habit> getHabits(){
+    public HashSet<Habit> getHabits(){
         return habits;
     }
 
@@ -67,10 +72,4 @@ public class User {
     public void setPassword(String password){
         this.password = password;
     }
-
-    @Override
-    public String toString(){
-        return "Email: " + email + "\nPassword: " + password + "\nName: " + name;
-    }
-
 }
