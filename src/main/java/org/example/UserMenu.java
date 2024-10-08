@@ -8,15 +8,13 @@ public class UserMenu {
     public UserMenu(User user) {
         this.user = user;
     }
-    public void remove(){
-        Main.main(new String[]{""});
-    }
 
     public void showMenu(){
         System.out.println("Hello "+user.getName() +
                 " \n1. Change email\n2. Change password" +
                 "\n3. Change name\n4. Show habits" +
-                "\n5. Change habits\n6. Show my info");
+                "\n5. Change habits\n6. Show my info" +
+                "\n7. Remove profile");
         String choice = scanner.nextLine();
         int number;
         try {
@@ -27,15 +25,37 @@ public class UserMenu {
             showMenu();
             return;
         }
-        if(number == 1){
+        if(number == 1){ // 1. Change email
             changeEmail();
             showMenu();
             return;
-        }
-        if(number == 6){
-            System.out.println(user.getName()+" "+user.getPassword()+" "+user.getEmail());
+        } else if (number == 2) {//2. Change password
+            changePassword();
             showMenu();
             return;
+        }
+        else if (number == 3) {//3. Change name
+            changeName();
+            showMenu();
+            return;
+        }
+        else if (number == 4) {//4. Show habits
+            System.out.println(user.getHabits());
+            showMenu();
+            return;
+        }
+        else if (number == 5) {//5. Change habits
+
+        }
+        else if(number == 6){//6. Show my info
+            System.out.println("Your name is "
+                    +user.getName()+" your email is "+user.getEmail()+" your password is "+user.getPassword());
+            showMenu();
+            return;
+        }
+        else if(number == 7){
+            Main.emails.remove(user.getEmail());
+            Main.main(new String[]{""});
         }
     }
 
@@ -46,12 +66,18 @@ public class UserMenu {
         System.out.println("Your new email address has been changed");
     }
 
-    private void changePassword(String password){
-        user.setPassword(password);
+    private void changePassword(){
+        System.out.println("Please enter your new password");
+        String newPassword = scanner.nextLine();
+        user.setPassword(newPassword);
+        System.out.println("Your new password has been changed");
     }
 
-    private void changeName(String name){
-        user.setName(name);
+    private void changeName(){
+        System.out.println("Please enter your new name");
+        String newName = scanner.nextLine();
+        user.setName(newName);
+        System.out.println("Your new name has been changed");
     }
 
 

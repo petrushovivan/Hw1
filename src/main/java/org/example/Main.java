@@ -20,10 +20,8 @@ public class Main {
             UserMenu userMenu = new UserMenu(newUser);
             userMenu.showMenu();
 
-
         }
-        else if(choice == 2){ //Login
-
+        else if(choice == 2){ //Login1
         }
     }
 
