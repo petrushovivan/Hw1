@@ -15,7 +15,7 @@ public class UserMenu {
         System.out.println("Hello "+user.getName() +
                 "\n1. Change email\n2. Change password" +
                 "\n3. Change name\n4. Show habits" +
-                "\n5. Add habits\n6. Show my info" +
+                "\n5. Add habit\n6. Show my info" +
                 "\n7. Remove profile\n8. Remove habit" +
                 "\n9. Menu");
         String choice = scanner.nextLine();
@@ -69,7 +69,7 @@ public class UserMenu {
             showMenu();
             return;
         }
-        else if (number == 9) {
+        else if (number == 9) {// menu
             Main.main(new String[]{""});
             return;
         }

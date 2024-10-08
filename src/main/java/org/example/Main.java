@@ -48,6 +48,10 @@ public class Main {
     private static User registration(){
         System.out.println("Enter your email");
         String email = sc.nextLine();
+        while (!email.contains("@")){
+            System.out.println("Enter your email");
+            email = sc.nextLine();
+        }
         System.out.println("Enter your password");
         String password = sc.nextLine();
         System.out.println("Enter your name");

@@ -5,7 +5,8 @@ import java.util.Date;
 public class Habit {
     private String name;
     private Date date;
-    int frequency;
+    private int frequency;
+    private String describe;
     public Habit(String name, Date date, int frequency){
         this.name = name;
         this.date = date;
@@ -18,4 +19,5 @@ public class Habit {
     public String getName(){
         return name;
     }
+
 }
