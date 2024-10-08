@@ -3,13 +3,19 @@ package org.example;
 import java.util.Date;
 
 public class Habit {
-    String name;
-    Date date;
-    public Habit(String name, Date date){
+    private String name;
+    private Date date;
+    int frequency;
+    public Habit(String name, Date date, int frequency){
         this.name = name;
         this.date = date;
+        this.frequency = frequency;
     }
     public String toString(){
-        return name +" since "+date.toString();
+        return name +" since "+date.toString() +" with frequency "+ frequency;
+    }
+
+    public String getName(){
+        return name;
     }
 }

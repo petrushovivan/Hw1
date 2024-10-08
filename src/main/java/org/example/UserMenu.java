@@ -3,6 +3,7 @@ package org.example;
 import java.util.Date;
 import java.util.Scanner;
 
+
 public class UserMenu {
     Scanner scanner = new Scanner(System.in);
     private User user;
@@ -12,10 +13,11 @@ public class UserMenu {
 
     public void showMenu(){
         System.out.println("Hello "+user.getName() +
-                " \n1. Change email\n2. Change password" +
+                "\n1. Change email\n2. Change password" +
                 "\n3. Change name\n4. Show habits" +
                 "\n5. Add habits\n6. Show my info" +
-                "\n7. Remove profile");
+                "\n7. Remove profile\n8. Remove habit" +
+                "\n9. Menu");
         String choice = scanner.nextLine();
         int number;
         try {
@@ -57,9 +59,19 @@ public class UserMenu {
             showMenu();
             return;
         }
-        else if(number == 7){
+        else if(number == 7){ // Remove profile
             Main.emails.remove(user.getEmail());
             Main.main(new String[]{""});
+            return;
+        }
+        else if(number == 8){//remove habit
+            removeHabit();
+            showMenu();
+            return;
+        }
+        else if (number == 9) {
+            Main.main(new String[]{""});
+            return;
         }
     }
 
@@ -90,18 +102,48 @@ public class UserMenu {
         boolean ok = true;
         int year = 0, month = 0, day = 0;
         while (ok) {
-            System.out.println("Please enter start time in format YYYY.MM.DD");
-            String[] date = scanner.nextLine().split("\\.");
+            String[] date = new String[0];
+            while (date.length!=3) {
+                System.out.println("Please enter start time in format YYYY.MM.DD");
+                date = scanner.nextLine().split("\\.");
+            }
+
             try {
                 year = Integer.parseInt(date[0]) - 1900;
-                month = Integer.parseInt(date[1]);
+                month = Integer.parseInt(date[1]) - 1;
                 day = Integer.parseInt(date[2]);
                 ok = false;
             } catch (NumberFormatException e) {
                 ok = true;
             }
         }
-        user.addHabit(new Habit(habitName, new Date(year, month, day)));
+
+        ok = true;
+        int frequency = 0;
+        while (ok){
+            System.out.println("How many times a week?");
+            try{
+                frequency = Integer.parseInt(scanner.nextLine());
+                if(frequency<=7&&frequency>=1) {
+                    ok = false;
+                }
+            }
+            catch (NumberFormatException e){
+                ok = true;
+            }
+        }
+        user.addHabit(new Habit(habitName, new Date(year, month, day), frequency));
         System.out.println("Your habit added");
+    }
+
+    private void removeHabit(){
+        System.out.println("Please enter your habit name to remove");
+        String habitName = scanner.nextLine();
+        for(Habit hab : user.getHabits()){
+            if(hab.getName().equals(habitName)){
+                user.getHabits().remove(hab);
+            }
+        }
+        System.out.println("Your habit removed");
     }
 }

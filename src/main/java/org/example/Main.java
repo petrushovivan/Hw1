@@ -21,7 +21,7 @@ public class Main {
             userMenu.showMenu();
 
         }
-        else if(choice == 2){ //Login1
+        else if(choice == 2){ //Login
         }
     }
 
