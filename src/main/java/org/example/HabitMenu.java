@@ -1,10 +1,8 @@
 package org.example;
 
 import java.util.Collections;
-import java.util.Comparator;
 import java.util.Date;
 import java.util.Scanner;
-import java.util.stream.Collectors;
 
 public class HabitMenu {
 
@@ -51,8 +49,10 @@ public class HabitMenu {
             showMenu();
             return;
         }
-        else if(number == 5){
-
+        else if(number == 5){//Point habit
+            pointHabit();
+            showMenu();
+            return;
         }
         else if(number == 6){//5. Make a note
             makeNote();
@@ -68,6 +68,16 @@ public class HabitMenu {
             UserMenu userMenu = new UserMenu(user);
             userMenu.showMenu();
             return;
+        }
+    }
+
+    private void pointHabit(){ /////////////////////////////////////////////////////////////////////////////////
+        System.out.println("Name habit for today point");
+        String name = scanner.nextLine();
+        for(Habit habit : user.getHabits()){
+            if(habit.getName().equals(name)){
+
+            }
         }
     }
 
