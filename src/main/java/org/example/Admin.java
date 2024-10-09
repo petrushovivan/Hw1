@@ -14,7 +14,7 @@ public class Admin {
     }
 
     public void showMenu(){
-        System.out.println("Welcome to the Admin Menu" +
+        System.out.println("Admin Menu" +
                 "\n1. Watch users\n2. Remove user\n3. Exit");
         String choice = scanner.nextLine();
         int number;
@@ -39,6 +39,7 @@ public class Admin {
             for(User user : users){
                 if(user.getEmail().equals(email)){
                     users.remove(user);
+                    Main.emails.remove(email);
                 }
             }
             showMenu();
