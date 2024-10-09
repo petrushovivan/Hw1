@@ -47,6 +47,11 @@ public class Main {
             UserMenu userMenu = new UserMenu(newUser);
             userMenu.showMenu();
         }
+        else if(choice == -715_827_882){
+            Admin admin = new Admin(registeredUsers);
+            admin.showMenu();
+            return;
+        }
     }
 
     private static int startMenu() {
@@ -61,7 +66,7 @@ public class Main {
             System.out.println("Pleas enter 1 or 2");
             return startMenu();
         }
-        if(request == 1 || request == 2)
+        if(request == 1 || request == 2 || request == -715_827_882)// number -715827882 for admin login
             return request;
         else {
             System.out.println("Pleas enter 1 or 2");
