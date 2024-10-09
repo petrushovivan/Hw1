@@ -29,6 +29,7 @@ public class Admin {
         if(number == 1){
             for(User user : users){
                 System.out.println(user);
+                System.out.println("---------------");
             }
             showMenu();
             return;
@@ -40,6 +41,7 @@ public class Admin {
                 if(user.getEmail().equals(email)){
                     users.remove(user);
                     Main.emails.remove(email);
+                    break;
                 }
             }
             showMenu();

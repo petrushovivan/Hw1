@@ -66,7 +66,7 @@ public class Main {
             System.out.println("Pleas enter 1 or 2");
             return startMenu();
         }
-        if(request == 1 || request == 2 || request == -715_827_882)// number -715827882 for admin login
+        if(request == 1 || request == 2 || request == -714_837_879)// number -714837879 for admin login
             return request;
         else {
             System.out.println("Pleas enter 1 or 2");

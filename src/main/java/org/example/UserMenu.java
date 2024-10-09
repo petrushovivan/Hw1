@@ -29,7 +29,7 @@ public class UserMenu {
         if (number == 1) {//4. Show habits
             HabitMenu habitMenu = new HabitMenu(user);
             habitMenu.showMenu();
-
+            return;
         }
         else if(number == 2){//6. Show my info
             System.out.println("Your name is "
