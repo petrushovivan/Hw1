@@ -1,11 +1,17 @@
 package org.example;
 
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Scanner;
 
 public class Main {
+
+    static ArrayList<User> registeredUsers = new ArrayList<>();
+
     static HashSet<String> emails = new HashSet<>();
+
     static Scanner sc = new Scanner(System.in);
+
     public static void main(String[] args) {
         int choice = startMenu();
         if(choice == 1){//Register
@@ -17,11 +23,29 @@ public class Main {
                 newUser = registration();
             }
             emails.add(newUser.getEmail());
+            registeredUsers.add(newUser);
             UserMenu userMenu = new UserMenu(newUser);
             userMenu.showMenu();
 
         }
         else if(choice == 2){ //Login
+            System.out.println("Login");
+            User newUser = login();
+            boolean found = false;
+            for(User user : registeredUsers){
+                if (user.getEmail().equals(newUser.getEmail())&&
+                user.getPassword().equals(newUser.getPassword())){
+                    newUser = user;
+                    found = true;
+                    break;
+                }
+            }
+            if(!found){
+                System.out.println("User not found");
+                main(new String[0]);
+            }
+            UserMenu userMenu = new UserMenu(newUser);
+            userMenu.showMenu();
         }
     }
 
@@ -58,5 +82,17 @@ public class Main {
         String firstName = sc.nextLine();
 
         return new User(email, password, firstName);
+    }
+
+    private static User login(){
+        System.out.println("Enter your email");
+        String email = sc.nextLine();
+        while (!email.contains("@")){
+            System.out.println("Enter your email");
+            email = sc.nextLine();
+        }
+        System.out.println("Enter your password");
+        String password = sc.nextLine();
+        return new User(email, password, "");
     }
 }

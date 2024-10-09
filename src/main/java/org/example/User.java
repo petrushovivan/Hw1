@@ -1,11 +1,13 @@
 package org.example;
 
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Objects;
+import java.util.TreeSet;
 
 public class User {
 
-    private HashSet<Habit> habits = new HashSet<>();
+    private ArrayList<Habit> habits = new ArrayList<>();
 
     private String email;
 
@@ -45,7 +47,7 @@ public class User {
         habits.remove(habit);
     }
 
-    public HashSet<Habit> getHabits(){
+    public ArrayList<Habit> getHabits(){
         return habits;
     }
 
@@ -71,5 +73,9 @@ public class User {
 
     public void setPassword(String password){
         this.password = password;
+    }
+
+    public void setHabits(ArrayList<Habit> habits){
+        this.habits = habits;
     }
 }

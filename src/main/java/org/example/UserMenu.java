@@ -1,12 +1,14 @@
 package org.example;
 
-import java.util.Date;
 import java.util.Scanner;
 
 
 public class UserMenu {
+
     private Scanner scanner = new Scanner(System.in);
+
     private User user;
+
     public UserMenu(User user) {
         this.user = user;
     }
@@ -37,10 +39,11 @@ public class UserMenu {
         }
         else if(number == 3){ // Remove profile
             Main.emails.remove(user.getEmail());
+            Main.registeredUsers.remove(user);
             Main.main(new String[]{""});
             return;
         }
-        else if(number == 4){
+        else if(number == 4){ //settingsMenu
             SettingsMenu settingsMenu = new SettingsMenu(user);
             settingsMenu.showMenu();
             return;

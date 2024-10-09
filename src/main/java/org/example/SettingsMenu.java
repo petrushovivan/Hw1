@@ -3,11 +3,15 @@ package org.example;
 import java.util.Scanner;
 
 public class SettingsMenu {
+
     private Scanner scanner = new Scanner(System.in);
+
     private User user;
+
     public SettingsMenu(User user) {
         this.user = user;
     }
+
     public void showMenu(){
         System.out.println("Hello "+user.getName() +
                 "\n1. Change email\n2. Change password" +
