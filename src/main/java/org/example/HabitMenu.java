@@ -18,14 +18,14 @@ public class HabitMenu {
         System.out.println(user.getName()+ " habits");
         System.out.println("1. Show habits\n2. Sort habits\n3. Add habit" +
                 "\n4. Remove habit\n5. Point habit\n6. Make a note" +
-                "\n7. Show my note\n8. Go to user menu");
+                "\n7. Show my note\n8. Get my streaks\n9. Go to user menu");
         String choice = scanner.nextLine();
         int number;
         try {
             number = Integer.parseInt(choice);
         }
         catch (NumberFormatException e) {
-            System.out.println("Please enter a number between 1 and 8");
+            System.out.println("Please enter a number between 1 and 9");
             showMenu();
             return;
         }
@@ -64,19 +64,26 @@ public class HabitMenu {
             showMenu();
             return;
         }
-        else if(number == 8){ //Go to user menu
+        else if (number == 8) { //Get my streaks
+            for(Habit habit : user.getHabits()){
+                System.out.println(habit.getName() + " of "+ habit.getStreek() +" days streak");
+            }
+            showMenu();
+            return;
+        }
+        else if(number == 9){ //Go to user menu
             UserMenu userMenu = new UserMenu(user);
             userMenu.showMenu();
             return;
         }
     }
 
-    private void pointHabit(){ /////////////////////////////////////////////////////////////////////////////////
+    private void pointHabit(){
         System.out.println("Name habit for today point");
         String name = scanner.nextLine();
         for(Habit habit : user.getHabits()){
             if(habit.getName().equals(name)){
-
+                habit.pointDate(new Date());
             }
         }
     }
