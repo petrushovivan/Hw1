@@ -18,14 +18,15 @@ public class HabitMenu {
         System.out.println(user.getName()+ " habits");
         System.out.println("1. Show habits\n2. Sort habits\n3. Add habit" +
                 "\n4. Remove habit\n5. Point habit\n6. Make a note" +
-                "\n7. Show my note\n8. Get my streaks\n9. Go to user menu");
+                "\n7. Show my note\n8. Get my streaks\n9. Get my points" +
+                "\n10. Go to user menu");
         String choice = scanner.nextLine();
         int number;
         try {
             number = Integer.parseInt(choice);
         }
         catch (NumberFormatException e) {
-            System.out.println("Please enter a number between 1 and 9");
+            System.out.println("Please enter a number between 1 and 10");
             showMenu();
             return;
         }
@@ -71,7 +72,12 @@ public class HabitMenu {
             showMenu();
             return;
         }
-        else if(number == 9){ //Go to user menu
+        else if(number == 9) {
+            getPoints();
+            showMenu();
+            return;
+        }
+        else if(number == 10){ //Go to user menu
             UserMenu userMenu = new UserMenu(user);
             userMenu.showMenu();
             return;
@@ -188,5 +194,24 @@ public class HabitMenu {
         else if(answer == 2){
             Collections.sort(user.getHabits(), (o1, o2) -> o2.getDate().compareTo(o1.getDate()));
         }
+    }
+
+    private void getPoints(){
+        System.out.println("-------------------");
+        System.out.println("Static for today");
+        for (Habit habit : user.getHabits()){
+            System.out.println(habit.getName() + " of "+ habit.countPointsForToday()+" times " +"with percent: " + habit.countPointsForToday()*100+ "%");
+        }
+        System.out.println("-------------------");
+        System.out.println("Static for week");
+        for (Habit habit : user.getHabits()){
+            System.out.println(habit.getName() + " of "+ habit.countPointsForWeek()+" times "+"with percent: " + (double)habit.countPointsForWeek()*100./7.+ "%");
+        }
+        System.out.println("-------------------");
+        System.out.println("Static for month");
+        for (Habit habit : user.getHabits()){
+            System.out.println(habit.getName() + " of "+ habit.countPointsForMonth()+" times "+"with percent: " + (double)habit.countPointsForMonth()*100./30.+ "%");
+        }
+        System.out.println("-------------------");
     }
 }

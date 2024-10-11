@@ -46,7 +46,7 @@ public class Habit {
 
     public void pointDate(Date date){
         pointDates.add(date);
-        if(date.getTime()-lastPointDate.getTime()<=86_400_000L&&date.getTime()-lastPointDate.getTime()>=43_200_000L){
+        if(date.getTime()-lastPointDate.getTime()>=86_400_000L&&date.getTime()-lastPointDate.getTime()<=172_800_000L){
             streek++;
             lastPointDate = date;
         }
@@ -55,10 +55,44 @@ public class Habit {
         }
     }
 
-    public int countForMonth(){
+    public int countPointsForMonth(){
         int result = 0;
+        Date nowDate = new Date();
         for(Date date : pointDates){
-            if(date.getTime()-lastPointDate.getTime()<=86_400_000L){}
+            if(nowDate.getTime()-date.getTime()<=2_592_000_000L){
+                result++;
+            }
+            else {
+                break;
+            }
+        }
+        return result;
+    }
+
+    public int countPointsForWeek(){
+        int result = 0;
+        Date nowDate = new Date();
+        for(Date date : pointDates){
+            if(nowDate.getTime()-date.getTime()<=604_800_000L){
+                result++;
+            }
+            else {
+                break;
+            }
+        }
+        return result;
+    }
+
+    public int countPointsForToday(){
+        int result = 0;
+        Date nowDate = new Date();
+        for(Date date : pointDates){
+            if(nowDate.getTime()-date.getTime()<=86_400_000L){
+                result++;
+            }
+            else {
+                break;
+            }
         }
         return result;
     }
