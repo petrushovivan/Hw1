@@ -1,7 +1,6 @@
 package org.example;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.HashSet;
 import java.util.Scanner;
 
@@ -48,7 +47,7 @@ public class Main {
             UserMenu userMenu = new UserMenu(newUser);
             userMenu.showMenu();
         }
-        else if(choice == -715_827_882){
+        else if(choice == -714_837_879){
             Admin admin = new Admin(registeredUsers);
             admin.showMenu();
             return;
