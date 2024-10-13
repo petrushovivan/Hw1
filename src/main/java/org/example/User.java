@@ -27,6 +27,7 @@ public class User {
         return Objects.equals(email, user.email) && Objects.equals(password, user.password) && Objects.equals(name, user.name);
     }
 
+
     @Override
     public int hashCode() {
         return Objects.hash(email, password, name);

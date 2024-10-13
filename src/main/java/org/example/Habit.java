@@ -55,6 +55,8 @@ public class Habit {
         }
     }
 
+
+
     public int countPointsForMonth(){
         int result = 0;
         Date nowDate = new Date();
