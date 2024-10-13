@@ -48,6 +48,7 @@ public class SettingsMenu {
         }
     }
 
+
     private void changeEmail(){
         System.out.println("Please enter your new email address");
         String newEmail = scanner.nextLine();

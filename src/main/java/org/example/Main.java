@@ -89,6 +89,8 @@ public class Main {
         return new User(email, password, firstName);
     }
 
+
+
     private static User login(){
         System.out.println("Enter your email");
         String email = sc.nextLine();

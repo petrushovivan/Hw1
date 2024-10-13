@@ -13,6 +13,7 @@ public class UserMenu {
         this.user = user;
     }
 
+
     public void showMenu(){
         System.out.println("Hello "+user.getName() + "\n1. Check habits" +
                 "\n2. Show my info\n3. Remove profile\n4. Settings\n5. Menu");

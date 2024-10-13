@@ -84,6 +84,7 @@ public class HabitMenu {
         }
     }
 
+
     private void pointHabit(){
         System.out.println("Name habit for today point");
         String name = scanner.nextLine();
